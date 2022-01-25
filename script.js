@@ -30,9 +30,9 @@ x(nombre, nacimiento);*/
     console.log(`${salida} las entradas estan apunto de agotarse`)
   } else { console.log(`${salida} esta es la ultima entrada`) }
 }*/
-let caballitos = prompt("¿cuantos caballitos serviras?");
-let mlCaballito = caballitos * 30;
-for (let i = 750, r = 1; i > 30; i -= mlCaballito, r++) {
+/*let caballitos = prompt("¿cuantos caballitos serviras?");
+let mlCaballito = caballitos * 30;*/
+/*for (let i = 750, r = 1; i > 30; i -= mlCaballito, r++) {
   let rondas = (i / mlCaballito) - 1;
   let salida = `Ronda ${r} serviste ${caballitos} caballitos de mezcal te quedan ${rondas} rondas`;
   if (i >= 500) {
@@ -40,4 +40,18 @@ for (let i = 750, r = 1; i > 30; i -= mlCaballito, r++) {
   } else if (i < 500 && i >= 300) {
     console.log(`${salida} tu mezcal se esta agotando`);
   } else { console.log(`${salida} es momento de conseguir mas elixir`); }
+}*/
+
+let bt = 750;
+while (bt >= 30) {
+  let caballitos = prompt("¿cuantos caballitos serviras?");
+  let mlCaballito = caballitos * 30;
+  bt = bt - mlCaballito;
+  let crest = bt / 30;
+  let salida = `serviste ${caballitos} caballitos te quedan ${crest}`;
+  if (crest >= 12) {
+    console.log(`${salida} esos son mas de la mitad`);
+  } else if (crest < 12 && crest >= 5) {
+    console.log(`${salida} tu mezcal esta a punto de terminarse`);
+  } else { console.log(`${salida} es momento de conseguir mas Elixir`); }
 }
