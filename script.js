@@ -1,57 +1,105 @@
-/*let nombre = prompt("nombre completo");
-let nacimiento = prompt("año de nacimiento cuatro cifras");
-//const ANO = new Date().getFullYear();
-//let edad = (ANO - nacimiento);
-//let salida = `hola ${nombre} tienes ${edad}`;
+/*class pelicula {
+  constructor(cinta) {
+    this.nombre = cinta.title;
+    this.director = cinta.director;
+    this.estreno = cinta.release_date;
+    this.episodio = cinta.episode_id;
+  };
+  mensaje() {
+    console.log(
+      `Star Wars episodio ${this.episodio}, ${this.nombre}, fue estrenada en ${this.estreno} y dirigida por ${this.director}`
+    )
+  };
+};
+const episodioIV = {
+  title: "A New Hope",
+  episode_id: 4,
+  release_date: "1977-05-25",
+  director: "George Lucas"
+};
+const episodioV = {
+  title: "The Empire Strikes Back",
+  episode_id: 5,
+  release_date: "1983-05-25",
+  director: "Irvin Kershner"
+};
+const episodioVI = {
+  title: "Return of the Jedi",
+  episode_id: 6,
+  release_date: "1977-05-25",
+  director: "Richard Marquand"
+};
 
-function x(nombre, nacimiento) {
-  const ANO = new Date().getFullYear();
-  let edad = (ANO - nacimiento);
-  let salida = `hola ${nombre} tienes ${edad}`;
-  if (edad < 10) {
-    console.log(`${salida} que bueno que puedas dedicar tiempo a jugar`);
-  } else if (edad <= 18) {
-    console.log(`${salida}  tienes toda una vida por delante`)
-  } else if (edad > 18 && edad <= 35) {
-    console.log(`${salida} que grande que estas`);
-  } else if (edad > 35 && edad <= 65) {
-    console.log(`${salida} estas muy grande para andar con jueguitos`);
-  } else { console.log(`camara prro`) }
-}
-x(nombre, nacimiento);*/
+const pelicula1 = new pelicula(episodioVI);
+pelicula1.mensaje();
+let pelicula2 = new pelicula(episodioIV);
+pelicula2.mensaje();
+let sw = new pelicula(episodioV);
+sw.mensaje();*/
 
-/*for (i = 0; i < 100; i++) {
-  let salida = `se vendio la entrada ${i}`;
-  if (i <= 50) {
-    console.log(`${salida} quedan mas de la mitad de entradas`);
-  } else if (i > 50 && i < 75) {
-    console.log(`${salida} quedan pocas entradas`)
-  } else if (i >= 75 && i < 99) {
-    console.log(`${salida} las entradas estan apunto de agotarse`)
-  } else { console.log(`${salida} esta es la ultima entrada`) }
-}*/
-/*let caballitos = prompt("¿cuantos caballitos serviras?");
-let mlCaballito = caballitos * 30;*/
-/*for (let i = 750, r = 1; i > 30; i -= mlCaballito, r++) {
-  let rondas = (i / mlCaballito) - 1;
-  let salida = `Ronda ${r} serviste ${caballitos} caballitos de mezcal te quedan ${rondas} rondas`;
-  if (i >= 500) {
-    console.log(`${salida} eso es mas de la mitad, la noche es joven`);
-  } else if (i < 500 && i >= 300) {
-    console.log(`${salida} tu mezcal se esta agotando`);
-  } else { console.log(`${salida} es momento de conseguir mas elixir`); }
-}*/
+//calculadora de proporciones
 
-let bt = 750;
-while (bt >= 30) {
-  let caballitos = prompt("¿cuantos caballitos serviras?");
-  let mlCaballito = caballitos * 30;
-  bt = bt - mlCaballito;
-  let crest = bt / 30;
-  let salida = `serviste ${caballitos} caballitos te quedan ${crest}`;
-  if (crest >= 12) {
-    console.log(`${salida} esos son mas de la mitad`);
-  } else if (crest < 12 && crest >= 5) {
-    console.log(`${salida} tu mezcal esta a punto de terminarse`);
-  } else { console.log(`${salida} es momento de conseguir mas Elixir`); }
-}
+
+//mezcalita de limon
+
+let volumen = prompt("¿Que cantidad quieres preparar?(ingresala en mililitros y solo números)");
+volumen = parseInt(volumen);
+volumen = volumen / 1000;
+
+class proporcion {
+  constructor(x) {
+    this.agua = x.agua * volumen;
+    this.mezcal = x.mezcal * volumen;
+    this.jamaica = x.jamaica * volumen;
+    this.tamarindo = x.tamarindo * volumen;
+    this.jugo_limon = x.jugo_limon * volumen;
+    this.miel = x.miel * volumen;
+    this.pepino = x.pepino * volumen;
+  };
+
+  recetaNueva() {
+    alert(`para preparar ${volumen}l. de esta bebida necesitaras los siguientes ingredientes: Agua: ${this.agua}ml., Mezcal: ${this.mezcal}ml., Jamaica: ${this.jamaica}gr., Tamarindo: ${this.tamarindo}gr., Jugo de limon: ${this.jugo_limon}ml., Miel: ${this.miel} cucharadas.`);
+  };
+};
+
+let a = {
+  agua: 800,
+  mezcal: 64,
+  jugo_limon: 80,
+  pepino: 2,
+  miel: 5
+};
+//mezcalita de jamaica
+let b = {
+  agua: 800,
+  mezcal: 64,
+  jamaica: 80,
+  miel: 5
+};
+//mezcalita de tamarindo
+let c = {
+  agua: 800,
+  mezcal: 64,
+  Tamarindo: 80,
+  miel: 5
+};
+
+let receta = prompt("selecciona la receta que quieres preparar ingresando unicamente la letra de la que elijas, ejemplo, para preparar una mezcalita de 'jamaica' ingresa solo la letra 'b'");
+let preparar;
+
+switch (receta) {
+  case "a":
+    preparar = new proporcion(a);
+    preparar.recetaNueva();
+    break;
+  case "b":
+    preparar = new proporcion(b);
+    preparar.recetaNueva();
+    break;
+  case "c":
+    preparar = new proporcion(c);
+    preparar.recetaNueva();
+    break;
+  default:
+    alert("ingresaste una letra que no coincide con ninguna receta");
+};
