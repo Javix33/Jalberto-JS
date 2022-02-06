@@ -38,12 +38,9 @@ switch (today) {
     console.log(`${welcome} no parece un mal dia para un poco de mezcal.`);
 };
 
-
 let userBebida = prompt("¿Qué bebida de elixir utilizaras? (espadin o algun sabor 'Naranja, Maracuya o lichi'");
 userBebida = userBebida.toLowerCase();
-console.log(userBebida)
 if (userBebida == "naranja") {
-  console.log(userBebida)
   console.log(`Solo añade hielo, algunos trozos de fruta y disfruta de tu Mezcal Elixir sabor Naranja`);
 } else if (userBebida == "maracuya") {
   console.log(`Solo añade hielo, algunos trozos de fruta y disfruta de tu Mezcal Elixir sabor Maracuya`);
@@ -117,14 +114,19 @@ switch (receta) {
 volumen = volumen * 1000;
 
 let caballitosPorServir = prompt(`tienes ${volumen} ml de esta receta ¿cuantos caballitos serviras?(solo numero)`);
+console.log(caballitosPorServir);
 const MILITROS_POR_CABALLITO = 30;
-let mililitrosPorRonda = caballitosPorServir * MILITROS_POR_CABALLITO;
-for (let i = volumen, r = 1; i > mililitrosPorRonda; i -= mililitrosPorRonda, r++) {
-  let rondas = Math.trunc((i / mililitrosPorRonda) - 1);
-  let salida = `Ronda ${r} serviste ${caballitosPorServir} caballitos de mezcal te quedan ${rondas} rondas`;
-  if (i >= 500) {
-    console.log(`${salida} eso es mas de la mitad, la noche es joven`);
-  } else if (i < 500 && i >= 300) {
-    console.log(`${salida} tu mezcal se esta agotando`);
-  } else { console.log(`${salida} es momento de conseguir mas elixir`); }
+let mililitrosPorRonda = parseInt(caballitosPorServir) * MILITROS_POR_CABALLITO;
+
+function calculadorRondas(bebidaDisponible) {
+  for (let i = bebidaDisponible, rondaActual = 1; i > mililitrosPorRonda; i -= mililitrosPorRonda, rondaActual++) {
+    let rondasRestantes = Math.trunc((i / mililitrosPorRonda) - 1);
+    let salida = `Ronda ${rondaActual} serviste ${caballitosPorServir} caballitos de mezcal te quedan ${rondasRestantes} rondas`;
+    if (i >= bebidaDisponible / 2) {
+      console.log(`${salida} eso es mas de la mitad, la noche es joven`);
+    } else if (i < bebidaDisponible / 2 && i >= bebidaDisponible / 4) {
+      console.log(`${salida} queda menos de la mitad de tu bebida`);
+    } else { console.log(`${salida} es momento de conseguir mas Elixir`); }
+  };
 };
+calculadorRondas(volumen);
