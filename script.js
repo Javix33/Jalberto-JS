@@ -1,4 +1,4 @@
-let user = "j" //prompt("¿Cual es tu nombre?");
+let user = prompt("¿Cual es tu nombre?");
 let date = new Date();
 let today = date.getDay();
 //array
@@ -40,7 +40,7 @@ switch (today) {
     console.log(`${welcome} no parece un mal dia para un poco de mezcal.`);
 };
 
-let userBebida = "e" //prompt("¿Qué bebida de elixir utilizaras? (espadin o algun sabor 'Naranja, Maracuya o lichi'");
+let userBebida = prompt("¿Qué bebida de elixir utilizaras? (espadin o algun sabor 'Naranja, Maracuya o lichi'");
 userBebida = userBebida.toLowerCase();
 if (userBebida == "naranja") {
   console.log(`Solo añade hielo, algunos trozos de fruta y disfruta de tu Mezcal Elixir sabor Naranja`);
@@ -50,7 +50,7 @@ if (userBebida == "naranja") {
   console.log(`Solo añade hielo, algunos trozos de fruta y disfruta de tu Mezcal Elixir sabor Lichi`);
 } else {
   console.log(`procedamos a preparar algo con tu Mezcal Espadin de Elixir`);
-  let volumen = 500 //prompt("¿Que cantidad quieres preparar?(ingresala en mililitros y solo números)");
+  let volumen = prompt("¿Que cantidad quieres preparar?(ingresala en mililitros y solo números)");
   volumen = parseInt(volumen);
   volumen = volumen / 1000;
 
@@ -92,7 +92,8 @@ if (userBebida == "naranja") {
     miel: 5
   };
 
-  let receta = "a" //prompt("selecciona la receta que quieres preparar ingresando unicamente la letra de la que elijas, ejemplo, para preparar una mezcalita de 'jamaica' ingresa solo la letra 'b'");
+  let receta = prompt("selecciona la receta que quieres preparar ingresando unicamente la letra de la que elijas, ejemplo, para preparar una mezcalita de 'jamaica' ingresa solo la letra 'b'");
+  receta = receta.toLocaleLowerCase;
   let preparar;
 
   switch (receta) {
@@ -114,8 +115,7 @@ if (userBebida == "naranja") {
   };
   volumen = volumen * 1000;
 
-  let caballitosPorServir = 5 //prompt(`tienes ${volumen} ml de esta receta ¿cuantos caballitos serviras?(solo numero)`);
-  console.log(caballitosPorServir);
+  let caballitosPorServir = prompt(`tienes ${volumen} ml de esta receta ¿cuantos caballitos serviras?(solo numero)`);
   const MILITROS_POR_CABALLITO = 30;
   let mililitrosPorRonda = parseInt(caballitosPorServir) * MILITROS_POR_CABALLITO;
 
