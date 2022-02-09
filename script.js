@@ -13,7 +13,7 @@ let weekDays = [
 ];
 //propiedad length
 let dayName = weekDays[today];
-let welcome = `Bienvenido ${user}, la semana tiene ${weekDays.length} días, hoy es ${dayName}, `;
+let welcome = `Hola ${user}, la semana tiene ${weekDays.length} días y hoy es ${dayName}, `;
 switch (today) {
   case today = 0:
     console.log(`${welcome} quiza no es el mejor día para beber.`);
@@ -42,6 +42,9 @@ switch (today) {
 
 let userBebida = prompt("¿Qué bebida de elixir utilizaras? (espadin o algun sabor 'Naranja, Maracuya o lichi'");
 userBebida = userBebida.toLowerCase();
+
+
+
 if (userBebida == "naranja") {
   console.log(`Solo añade hielo, algunos trozos de fruta y disfruta de tu Mezcal Elixir sabor Naranja`);
 } else if (userBebida == "maracuya") {
@@ -50,72 +53,70 @@ if (userBebida == "naranja") {
   console.log(`Solo añade hielo, algunos trozos de fruta y disfruta de tu Mezcal Elixir sabor Lichi`);
 } else {
   console.log(`procedamos a preparar algo con tu Mezcal Espadin de Elixir`);
-  let volumen = prompt("¿Que cantidad quieres preparar?(ingresala en mililitros y solo números)");
-  volumen = parseInt(volumen);
-  volumen = volumen / 1000;
 
-  class proporcion {
-    constructor(x) {
-      this.agua = x.agua * volumen;
-      this.mezcal = x.mezcal * volumen;
-      this.jamaica = x.jamaica * volumen;
-      this.tamarindo = x.tamarindo * volumen;
-      this.jugo_limon = x.jugo_limon * volumen;
-      this.miel = x.miel * volumen;
-      this.pepino = x.pepino * volumen;
-    };
 
-    recetaNueva() {
-      console.log(`para preparar ${volumen}l. de esta bebida necesitaras los siguientes ingredientes: Agua: ${this.agua}ml., Mezcal: ${this.mezcal}ml., Jamaica: ${this.jamaica}gr., Tamarindo: ${this.tamarindo}gr., Jugo de limon: ${this.jugo_limon}ml., Miel: ${this.miel} cucharadas.`);
-    };
+  let recipeLimon = [
+    agua = 800,
+    mezcal = 64,
+    jugoDeLimon = 80,
+    pepino = 2,
+    miel = 5
+  ];
+  let recipeJamaica = [
+    agua = 800,
+    mezcal = 64,
+    jamaica = 80,
+    miel = 5
+  ];
+  let receipeTamarindo = [
+    agua = 800,
+    mezcal = 64,
+    Tamarindo = 80,
+    miel = 5
+  ];
+
+  let recipes = [
+    recipeLimon,
+    recipeJamaica,
+    receipeTamarindo
+  ];
+  let seleccionReceta = prompt("selecciona la receta que quieres preparar ingresando unicamente el numero de la que elijas, ejemplo, para preparar una mezcalita de 'jamaica' ingresa solo 2");
+  seleccionReceta = parseInt(seleccionReceta) - 1;
+
+
+  let recetaElegida = recipes[seleccionReceta];
+
+  let recetaFinal = [];
+
+  let volumen = prompt("¿Que cantidad quieres preparar? (en mililitros)");
+  volumen = parseInt(volumen) / 1000;
+
+  function calcularProporcion(recetaElegida, proporcion, recetaFinal) {
+
+    for (ingrediente of recetaElegida) {
+      resultado = (ingrediente = ingrediente * proporcion);
+      recetaFinal.push(resultado)
+    }
   };
-
-  let a = {
-    agua: 800,
-    mezcal: 64,
-    jugo_limon: 80,
-    pepino: 2,
-    miel: 5
-  };
-  //mezcalita de jamaica
-  let b = {
-    agua: 800,
-    mezcal: 64,
-    jamaica: 80,
-    miel: 5
-  };
-  //mezcalita de tamarindo
-  let c = {
-    agua: 800,
-    mezcal: 64,
-    Tamarindo: 80,
-    miel: 5
-  };
-
-  let receta = prompt("selecciona la receta que quieres preparar ingresando unicamente la letra de la que elijas, ejemplo, para preparar una mezcalita de 'jamaica' ingresa solo la letra 'b'");
-  receta = receta.toLocaleLowerCase;
-  let preparar;
-
-  switch (receta) {
-    case "a":
-      preparar = new proporcion(a);
-      preparar.recetaNueva();
-      console.log(typeof(preparar))
+  calcularProporcion(recetaElegida, volumen, recetaFinal);
+  switch (seleccionReceta) {
+    case 0:
+      console.log(`para la mezcalita de limon necesitaras ${recetaFinal.length} ingredientes "agua: ${recetaFinal[0]}ml, mezcal: ${recetaFinal[1]} ml, jugo de limon: ${recetaFinal[2]} ml, pepinos: ${recetaFinal[3]} piezas, miel: ${recetaFinal[4]} cucharadas".`);
       break;
-    case "b":
-      preparar = new proporcion(b);
-      preparar.recetaNueva();
+
+    case 1:
+      console.log(`para la mezcalita de jamaica necesitaras ${recetaFinal.length} ingredientes "agua: ${recetaFinal[0]} ml, mezcal: ${recetaFinal[1]} ml, jamaica: ${recetaFinal[2]} gramos, miel: ${recetaFinal[3]} cucharadas".`);
       break;
-    case "c":
-      preparar = new proporcion(c);
-      preparar.recetaNueva();
+    case 2:
+      console.log(`para la mezcalita de Tamarindo necesitaras ${recetaFinal.length} ingredientes "agua: ${recetaFinal[0]} ml, mezcal: ${recetaFinal[1]} ml, Tamarindo: ${recetaFinal[2]} gramos, miel: ${recetaFinal[3]} cucharadas".`);
       break;
     default:
-      console.log("ingresaste una letra que no coincide con ninguna receta");
+      console.log("La receta que seleccionaste es invalida, por favor refresca la pagina e intenta de nuevo")
   };
-  volumen = volumen * 1000;
+  const PROPORCIONENMILILITROS = 1000;
+  volumen = volumen * PROPORCIONENMILILITROS;
 
-  let caballitosPorServir = prompt(`tienes ${volumen} ml de esta receta ¿cuantos caballitos serviras?(solo numero)`);
+  let caballitosPorServir = prompt(`tienes ${volumen} ml de esta receta ¿cuantos caballitos serviras? (solo numero)`);
   const MILITROS_POR_CABALLITO = 30;
   let mililitrosPorRonda = parseInt(caballitosPorServir) * MILITROS_POR_CABALLITO;
 
@@ -123,11 +124,13 @@ if (userBebida == "naranja") {
     for (let i = bebidaDisponible, rondaActual = 1; i > mililitrosPorRonda; i -= mililitrosPorRonda, rondaActual++) {
       let rondasRestantes = Math.trunc((i / mililitrosPorRonda) - 1);
       let salida = `Ronda ${rondaActual} serviste ${caballitosPorServir} caballitos de mezcal te quedan ${rondasRestantes} rondas`;
-      if (i >= bebidaDisponible / 2) {
+      if (rondasRestantes >= rondaActual) {
         console.log(`${salida} eso es mas de la mitad, la noche es joven`);
-      } else if (i < bebidaDisponible / 2 && i >= bebidaDisponible / 4) {
+      } else if (rondasRestantes < rondaActual && rondasRestantes >= rondaActual / 4) {
         console.log(`${salida} queda menos de la mitad de tu bebida`);
-      } else { console.log(`${salida} es momento de conseguir mas Elixir`); }
+      } else {
+        console.log(`${salida} es momento de conseguir mas Elixir`);
+      }
     };
   };
   calculadorRondas(volumen);
